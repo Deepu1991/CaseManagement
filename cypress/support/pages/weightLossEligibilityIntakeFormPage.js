@@ -1,4 +1,12 @@
 class weightLossEligibilityIntakeFormPage {
+    get logoutLink() {
+      return cy.get('#q-app > div > header > div > button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--rectangle.q-btn--actionable.q-focusable.q-hoverable.q-btn--no-uppercase');
+    }
+
+    get logout() {
+        return cy.get('#q-portal--menu--3 > div > div:nth-child(3) > div.q-item__section.column.q-item__section--main.justify-center');
+      }
+
     get weightLossEligibilityIntakeFormLink() {
       return cy.get('[data-testid="requests-list"] > :nth-child(2) > .q-item__section > :nth-child(1)');
     }
