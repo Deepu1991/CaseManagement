@@ -1,4 +1,8 @@
 import '../support/commands';
+import '../support/pages/weightLossEligibilityIntakeFormPage';
+import weightLossEligibilityIntakeFormPage from '../support/pages/weightLossEligibilityIntakeFormPage';
+
+let weightLossEligibilityIntakeForm =new weightLossEligibilityIntakeFormPage();
 
 describe("Addash Homepage smoke tests : Financial MID", () => {
   after(() => {
@@ -11,56 +15,107 @@ describe("Addash Homepage smoke tests : Financial MID", () => {
     it('should log in successfully', () => {
       cy.login();
       cy.title().should('include', 'Case Management'); 
-      cy.wait(20000);
+      //cy.wait(20000);
+    /*  weightLossEligibilityIntakeForm.weightLossEligibilityIntakeFormLink().click();
+      cy.wait(2000);
+      cy.fixture('formData').then((formData) => {
+      weightLossEligibilityIntakeForm.firstName().type(formData.firstName);
+      weightLossEligibilityIntakeForm.firstNameContinueBtn().click();
+      weightLossEligibilityIntakeForm.lastName().type(formData.lastName);
+      weightLossEligibilityIntakeForm.month().click();
+      weightLossEligibilityIntakeForm.selectMonth().click();
+      cy.contains(formData.month).click(); 
+      cy.contains(formData.day).click();
+      cy.get('div:nth-child(5)  div > button').click();
+      cy.get('.q-date__view > :nth-child(1) > .q-btn > .q-btn__content > .q-icon').click().click();
+      cy.contains(formData.year).click();
+      weightLossEligibilityIntakeForm.dobContinueBtn().click();
+      weightLossEligibilityIntakeForm.sex().type(formData.sex);
+      weightLossEligibilityIntakeForm.sexContinueBtn().click();
+      weightLossEligibilityIntakeForm.email().type(formData.email);
+      weightLossEligibilityIntakeForm.continueBtn().click();
+      weightLossEligibilityIntakeForm.input().type(formData.phone);
+      weightLossEligibilityIntakeForm.continueBtn().click();
+      weightLossEligibilityIntakeForm.input().type(formData.address);
+      weightLossEligibilityIntakeForm.continueBtn().click();
+      weightLossEligibilityIntakeForm.input().type(formData.city);
+      weightLossEligibilityIntakeForm.continueBtn().click();
+      weightLossEligibilityIntakeForm.input().type(formData.city);
+      weightLossEligibilityIntakeForm.continueBtn().click();
+      weightLossEligibilityIntakeForm.input().type(formData.state);
+      weightLossEligibilityIntakeForm.continueBtn().click(); 
+      weightLossEligibilityIntakeForm.input().type(formData.zipCode);
+      weightLossEligibilityIntakeForm.continueBtn().click(); 
+      weightLossEligibilityIntakeForm.input().type(formData.pronouns);
+      weightLossEligibilityIntakeForm.continueBtn().click(); 
+      weightLossEligibilityIntakeForm.input().type(formData.weightPounds);
+      weightLossEligibilityIntakeForm.continueBtn().click(); 
+      weightLossEligibilityIntakeForm.input().type(formData.healthGoals);
+      weightLossEligibilityIntakeForm.continueBtn().click(); 
+      weightLossEligibilityIntakeForm.input().type(formData.pastWeightLossMethods);
+      weightLossEligibilityIntakeForm.continueBtn().click(); 
+      weightLossEligibilityIntakeForm.input().type(formData.medicalDiagnosis);
+      weightLossEligibilityIntakeForm.continueBtn().click();
+      weightLossEligibilityIntakeForm.submitBtn().click();
+      weightLossEligibilityIntakeForm.submitConfirmBtn().click();
+      weightLossEligibilityIntakeForm.successMsgTxt()
+      .should("have.text"," Thank you for your submission. We have sent you a confirmation email for your records. ");
+      weightLossEligibilityIntakeForm.closeBtn().click();
+      });*/
+      });
     });
-  });
 
-  describe("Testing for Filling the form", () => {
+
+ describe("Testing for Filling the form", () => {
     it('should fill out the form and submit it successfully using fixture data', () => {
       cy.visit(Cypress.env('request_url'));
+      cy.wait(20000);
+      weightLossEligibilityIntakeForm.weightLossEligibilityIntakeFormLink.click();
       cy.wait(2000);
-      cy.get('[data-testid="requests-list"] > :nth-child(2) > .q-item__section > :nth-child(1)').click();
       cy.fixture('formData').then((formData) => {
-       cy.get('input.q-field__native.q-placeholder').type(formData.firstName);
-       cy.get('div.q-stepper__step div > div > button').click();
-       cy.get('input.q-field__native.q-placeholder').type(formData.lastName);
-       cy.get('.q-stepper__nav > .q-btn--unelevated').click();
-       cy.get('.relative-position.col > div > .q-btn > .q-btn__content > .block').click();
-       cy.contains(formData.month).click(); 
-       cy.contains(formData.day).click();
-       cy.get('div:nth-child(5)  div > button').click();
-       cy.get('.q-date__view > :nth-child(1) > .q-btn > .q-btn__content > .q-icon').click().click();
-       cy.contains(formData.year).click();
-      cy.get(' div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.sex);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.email);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.phone);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.address);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.city);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.state);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.zipCode);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.pronouns);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.weightPounds);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.healthGoals);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.pastWeightLossMethods);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('input.q-field__native.q-placeholder').type(formData.medicalDiagnosis);
-      cy.get('div.q-stepper__nav.q-gutter-md>button:nth-child(2)').click();
-      cy.get('button[type="submit"]').click();
-      cy.get("[data-testid='submit-form-dialog-submit-button']").click();
-      cy.get('div.q-dialog__inner.flex.no-pointer-events.q-dialog__inner--minimized.q-dialog__inner--standard.fixed-full.flex-center > div > div.q-card__section.q-card__section--vert')
+      weightLossEligibilityIntakeForm.firstName.type(formData.firstName);
+      weightLossEligibilityIntakeForm.firstNameContinueBtn.click();
+      weightLossEligibilityIntakeForm.lastName.type(formData.lastName);
+      weightLossEligibilityIntakeForm.month.click();
+      weightLossEligibilityIntakeForm.selectMonth.click();
+      cy.contains(formData.month).click(); 
+      cy.contains(formData.day).click();
+      cy.get('div:nth-child(5)  div > button').click();
+      cy.get('.q-date__view > :nth-child(1) > .q-btn > .q-btn__content > .q-icon').click().click();
+      cy.contains(formData.year).click();
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.input.type(formData.sex);
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.input.type(formData.email);
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.input.type(formData.phone);
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.input.type(formData.address);
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.input.type(formData.city);
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.input.type(formData.city);
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.input.type(formData.state);
+      weightLossEligibilityIntakeForm.continueBtn.click(); 
+      weightLossEligibilityIntakeForm.input.type(formData.zipCode);
+      weightLossEligibilityIntakeForm.continueBtn.click(); 
+      weightLossEligibilityIntakeForm.input.type(formData.pronouns);
+      weightLossEligibilityIntakeForm.continueBtn.click(); 
+      weightLossEligibilityIntakeForm.input.type(formData.weightPounds);
+      weightLossEligibilityIntakeForm.continueBtn.click(); 
+      weightLossEligibilityIntakeForm.input.type(formData.healthGoals);
+      weightLossEligibilityIntakeForm.continueBtn.click(); 
+      weightLossEligibilityIntakeForm.input.type(formData.pastWeightLossMethods);
+      weightLossEligibilityIntakeForm.continueBtn.click(); 
+      weightLossEligibilityIntakeForm.input.type(formData.medicalDiagnosis);
+      weightLossEligibilityIntakeForm.continueBtn.click();
+      weightLossEligibilityIntakeForm.submitBtn.click();
+      weightLossEligibilityIntakeForm.submitConfirmBtn.click();
+      cy.wait(5000);
+      weightLossEligibilityIntakeForm.successMsgTxt
       .should("have.text"," Thank you for your submission. We have sent you a confirmation email for your records. ");
-      cy.get("[data-testid='close-dialog-button']").click();
+      weightLossEligibilityIntakeForm.closeBtn.click();
       });
       });
     });
